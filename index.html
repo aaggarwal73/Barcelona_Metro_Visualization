@@ -18,10 +18,8 @@
           zoom: 4,
           center: barcelona
         });
-        var marker = new google.maps.Marker({
-          position: barcelona,
-          map: map
-        });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(barcelona);
       }
     </script>
     <script async defer
