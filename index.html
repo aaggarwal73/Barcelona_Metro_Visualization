@@ -3,171 +3,67 @@
   <head>
     <style>
       #map {
-        height: 400px;
+        height: 600px;
         width: 100%;
        }
-       .ticks {
-		  font: 10px sans-serif;
-		}
-
-		.track,
-		.track-inset,
-		.track-overlay {
-		  stroke-linecap: round;
-		}
-
-		.track {
-		  stroke: #000;
-		  stroke-opacity: 0.3;
-		  stroke-width: 10px;
-		}
-
-		.track-inset {
-		  stroke: #ddd;
-		  stroke-width: 8px;
-		}
-
-		.track-overlay {
-		  pointer-events: stroke;
-		  stroke-width: 50px;
-		  stroke: transparent;
-		  cursor: crosshair;
-		}
-
-		.handle {
-		  fill: #fff;
-		  stroke: #000;
-		  stroke-opacity: 0.5;
-		  stroke-width: 1.25px;
-		}
-    .attractions circle {
-      fill: red;
-      stroke: black;
-
-    }
     </style>
   </head>
   <body>
     <h3>Maximizing a Day Trip to Barcelona</h3>
     <h3>By: Aman Aggarwal, Chad Gerhard, Matt Lord</h3>
     <div id="map"></div>
-    <svg width="960" height="500"></svg>
-	<script src="//d3js.org/d3.v4.min.js"></script>
-  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdRh9dvJMzZi2ucTPzmq3am9sRWyePEww&callback=initMap"> </script>
-	<script>
-  var barcelona = {lat: 41.366360, lng: 2.175960};
-  var map = new google.maps.Map(d3.select("#map").node(), {
-        zoom: 10,
-        center: barcelona
-        // mapTypeId: google.maps.MapTypeId.TERRAIN;
-  });
-    // function initMap() {
-        
-    //     // var map = new google.maps.Map(document.getElementById('map'), {
-    //     //   zoom: 10,
-    //     //   center: barcelona
-    //     // });
-    //     var marker = new google.maps.Marker({
-    //       position: barcelona,
-    //       map: map
-    //     });
-    //     var transitLayer = new google.maps.TransitLayer();
-    //     transitLayer.setMap(map);
-    //   }
-    var svg = d3.select("svg"),
-    margin = {right: 50, left: 50},
-    width = +svg.attr("width") - margin.left - margin.right,
-    height = +svg.attr("height");
-  d3.json("/data/convertjson.json", function(error, data) {
-    // console.log(data[0]);
-    if (error) throw error;
+    <!-- load the d3.js library -->     
+    <script src="http://d3js.org/d3.v4.min.js"></script>
+    <script>
+      function initMap() {
+        var barcelona = {lat: 41.366360, lng: 2.175960};
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 14,
+          center: barcelona
+        });
+        var marker = new google.maps.Marker({
+          position: barcelona,
+          map: map
+        });
+        var transitLayer = new google.maps.TransitLayer();
+        transitLayer.setMap(map);
 
-    var overlay = new google.maps.OverlayView(); 
+        //puts all of the metro locations on the map.
+        //@TODO make it so only one marker per station
+        d3.csv('data/bcn-metro.csv', function(data) {
+          data.forEach(function (d) {
+            var marker = new google.maps.Marker({
+              position: new google.maps.LatLng(d.lat, d.lng),
+              map: map,
+              icon: {
+                path: google.maps.SymbolPath.CIRCLE,
+                scale: 4,
+                strokeColor : "#CC0000"
+              }
+            });
+          });
+        });
 
-    overlay.onAdd = function() {
-      var layer = d3.select(this.getPanes().overlayLayer).append("div")
-        .attr("class", "attractions");
-      overlay.draw = function() {
-        var projection = this.getProjection(),
-          padding = 10; 
+        //draw the attractions, idk why i even set the stroke color to black it's whatever we want it to beeeeee
+        d3.csv('data/barcelona-attraction.csv', function(data) {
+          data.forEach(function (d) {
+            var marker = new google.maps.Marker({
+              position: new google.maps.LatLng(d.lat, d.lng),
+              map: map,
+              icon: {
+                path: google.maps.SymbolPath.CIRCLE,
+                scale: 2,
+                strokeColor : "#000000"
+              }
+            });
+          });
+        });  
+      }
+      
 
-        var marker = layer.selectAll("svg") 
-          .data(d3.entries(data))
-          .each(transform)
-          .enter().append("svg")
-          .each(transform)
-          .attr("class", "marker");
-
-        marker.append("circle")
-          .attr ("r", 4.5)
-          .attr ("cx", padding)
-          .attr("cy", padding);
-
-
-          function transform(d) {
-            d = new google.maps.LatLng(d.addresses, d.addresses);
-            d = projection.fromLatLngToDivPixel(d);
-            return d3.select(this) 
-              .style ("left ", (d.x - padding) + "px")
-              .style ("top", (d.y - padding) + "px");
-          }
-
-      };
-
-    };
-    overlay.setMap(map);
-
-  });
-
-// var x = d3.scaleLinear()
-//     .domain([0, 180])
-//     .range([0, width])
-//     .clamp(true);
-
-// var slider = svg.append("g")
-//     .attr("class", "slider")
-//     .attr("transform", "translate(" + margin.left + "," + height / 2 + ")");
-
-// slider.append("line")
-//     .attr("class", "track")
-//     .attr("x1", x.range()[0])
-//     .attr("x2", x.range()[1])
-//   .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
-//     .attr("class", "track-inset")
-//   .select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
-//     .attr("class", "track-overlay")
-//     .call(d3.drag()
-//         .on("start.interrupt", function() { slider.interrupt(); })
-//         .on("start drag", function() { hue(x.invert(d3.event.x)); }));
-
-// slider.insert("g", ".track-overlay")
-//     .attr("class", "ticks")
-//     .attr("transform", "translate(0," + 18 + ")")
-//   .selectAll("text")
-//   .data(x.ticks(10))
-//   .enter().append("text")
-//     .attr("x", x)
-//     .attr("text-anchor", "middle")
-//     .text(function(d) { return d + "°"; });
-
-// var handle = slider.insert("circle", ".track-overlay")
-//     .attr("class", "handle")
-//     .attr("r", 9);
-
-// slider.transition() // Gratuitous intro!
-//     .duration(750)
-//     .tween("hue", function() {
-//       var i = d3.interpolate(0, 70);
-//       return function(t) { hue(i(t)); };
-//     });
-
-// function hue(h) {
-//   handle.attr("cx", x(h));
-//   svg.style("background-color", d3.hsl(h, 0.8, 0.8));
-// }
     </script>
-<!--     <script async defer
+    <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdRh9dvJMzZi2ucTPzmq3am9sRWyePEww&callback=initMap">
-    </script> -->
+    </script>
   </body>
 </html>
