@@ -40,6 +40,11 @@
 		  stroke-opacity: 0.5;
 		  stroke-width: 1.25px;
 		}
+    .attractions circle {
+      fill: red;
+      stroke: black;
+
+    }
     </style>
   </head>
   <body>
@@ -49,7 +54,7 @@
     <svg width="960" height="500"></svg>
 	<script src="//d3js.org/d3.v4.min.js"></script>
 	<script>
-      function initMap() {
+    function initMap() {
         var barcelona = {lat: 41.366360, lng: 2.175960};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 10,
@@ -66,7 +71,47 @@
     margin = {right: 50, left: 50},
     width = +svg.attr("width") - margin.left - margin.right,
     height = +svg.attr("height");
+  d3.json("/data/tourist.json", function(error, data) {
+    // console.log(data[0]);
+    if (error) throw error;
 
+    var overlay = new google.maps.OverlayView(); 
+
+    overlay.onAdd = function() {
+      var layer = d3.select(this.getPanes().overlayLayer).append("div")
+        .attr("class", "attractions");
+      overlay.draw = function() {
+        var projection = this.getProjection(),
+          padding = 10; 
+
+        var marker = layer.selectAll("svg") 
+          .data(d3.entries(data))
+          .each(transform)
+          .enter().append("svg")
+          .each(transform)
+          .attr("class", "marker");
+
+        marker.append("circle")
+          .attr ("r", 4.5)
+          .attr ("cx", padding)
+          .attr("cy", padding);
+
+
+          function transform(d) {
+            d = new google.maps.LatLng(d.value[13], d.value[12]);
+            d = projection.fromLatLongToDivPixel(d);
+            return d3.select(this) 
+              .style ("left ", (d.x - padding) + "px")
+              .style ("top", (d.y - padding) + "px");
+          }
+
+      };
+
+
+    };
+
+    overlay.setMap(map);
+  });
 var x = d3.scaleLinear()
     .domain([0, 180])
     .range([0, width])
@@ -119,6 +164,3 @@ function hue(h) {
     </script>
   </body>
 </html>
-
-
-
