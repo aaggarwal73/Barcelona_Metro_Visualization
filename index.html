@@ -37,7 +37,7 @@
               map: map,
               icon: {
                 path: google.maps.SymbolPath.CIRCLE,
-                scale: 4,
+                scale: 5,
                 strokeColor : "#CC0000"
               }
             });
@@ -52,10 +52,19 @@
               map: map,
               icon: {
                 path: google.maps.SymbolPath.CIRCLE,
-                scale: 2,
+                scale: 3,
                 strokeColor : "#000000"
               }
             });
+
+            var info = new google.maps.InfoWindow({
+                content: d.name
+            });
+
+            marker.addListener('click', function() {
+                info.open(map, marker);
+            });
+
           });
         });  
       }
