@@ -62,36 +62,41 @@
 
 
           });
-        });
 
-        //draw the attractions, idk why i even set the stroke color to black it's whatever we want it to beeeeee
-        d3.csv('data/barcelona-attraction.csv', function(data) {
-          data.forEach(function (d) {
-              var newPoint = new google.maps.LatLng(d.lat, d.lng);
-              var barcelonaPin = new google.maps.LatLng(41.366360, 2.175960);
-              if (google.maps.geometry.spherical.computeDistanceBetween(barcelonaPin, newPoint) < 2000) {
-                  var marker = new google.maps.Marker({
-                    position: newPoint,
-                    map: map,
-                    icon: {
-                      path: google.maps.SymbolPath.CIRCLE,
-                      scale: 3,
-                      strokeColor : "#000000"
+          //draw the attractions, idk why i even set the stroke color to black it's whatever we want it to beeeeee
+          d3.csv('data/barcelona-attraction.csv', function(data2) {
+            data2.forEach(function (d2) {
+                var newPoint = new google.maps.LatLng(d2.lat, d2.lng);
+                data.forEach(function (d) {
+                    var metroStation = new google.maps.LatLng(d.lat, d.lng);
+                    if (google.maps.geometry.spherical.computeDistanceBetween(metroStation, newPoint) < 500) {
+                        var marker = new google.maps.Marker({
+                          position: newPoint,
+                          map: map,
+                          icon: {
+                            path: google.maps.SymbolPath.CIRCLE,
+                            scale: 3,
+                            strokeColor : "#000000"
+                          }
+                      });
+
+                      var info = new google.maps.InfoWindow({
+                          content: d2.name
+                      });
+
+                      marker.addListener('click', function() {
+                          info.open(map, marker);
+                      });
                     }
-                });
-
-                var info = new google.maps.InfoWindow({
-                    content: d.name
-                });
-
-                marker.addListener('click', function() {
-                    info.open(map, marker);
-                });
-              }
+                })
 
 
+
+            });
           });
         });
+
+
       }
 
       var svg = d3.select("svg"),
