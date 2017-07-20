@@ -12,7 +12,7 @@
     <h3>Maximizing a Day Trip to Barcelona</h3>
     <h3>By: Aman Aggarwal, Chad Gerhard, Matt Lord</h3>
     <div id="map"></div>
-    <!-- load the d3.js library -->     
+    <!-- load the d3.js library -->
     <script src="http://d3js.org/d3.v4.min.js"></script>
     <script>
       function initMap() {
@@ -41,6 +41,14 @@
                 strokeColor : "#CC0000"
               }
             });
+
+            var metroInfo = new google.maps.InfoWindow({
+                content: d.name
+            });
+
+            marker.addListener('click', function() {
+                metroInfo.open(map, marker);
+            });
           });
         });
 
@@ -66,9 +74,9 @@
             });
 
           });
-        });  
+        });
       }
-      
+
 
     </script>
     <script async defer
