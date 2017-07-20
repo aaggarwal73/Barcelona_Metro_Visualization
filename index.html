@@ -56,34 +56,40 @@
               marker.addListener('click', function() {
                 metroInfo.open(map, marker);
               });
-              set.add(d.name); 
+              set.add(d.name);
 
             }
 
-            
+
           });
         });
 
         //draw the attractions, idk why i even set the stroke color to black it's whatever we want it to beeeeee
         d3.csv('data/barcelona-attraction.csv', function(data) {
           data.forEach(function (d) {
-            var marker = new google.maps.Marker({
-              position: new google.maps.LatLng(d.lat, d.lng),
-              map: map,
-              icon: {
-                path: google.maps.SymbolPath.CIRCLE,
-                scale: 3,
-                strokeColor : "#000000"
+              var newPoint = new google.maps.LatLng(d.lat, d.lng);
+              var barcelonaPin = new google.maps.LatLng(41.366360, 2.175960);
+              if (google.maps.geometry.spherical.computeDistanceBetween(barcelonaPin, newPoint) < 2000) {
+                  var marker = new google.maps.Marker({
+                    position: newPoint,
+                    map: map,
+                    icon: {
+                      path: google.maps.SymbolPath.CIRCLE,
+                      scale: 3,
+                      strokeColor : "#000000"
+                    }
+                });
+
+                var info = new google.maps.InfoWindow({
+                    content: d.name
+                });
+
+                marker.addListener('click', function() {
+                    info.open(map, marker);
+                });
               }
-            });
 
-            var info = new google.maps.InfoWindow({
-                content: d.name
-            });
 
-            marker.addListener('click', function() {
-                info.open(map, marker);
-            });
           });
         });
       }
@@ -129,7 +135,7 @@
           .attr("r", 9);
     </script>
     <script async defer
-      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdRh9dvJMzZi2ucTPzmq3am9sRWyePEww&callback=initMap">
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdRh9dvJMzZi2ucTPzmq3am9sRWyePEww&callback=initMap&libraries=geometry">
     </script>
   </body>
 </html>
