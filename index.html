@@ -31,7 +31,7 @@
         //puts all of the metro locations on the map.
         //@TODO make it so only one marker per station
         var set = new Set();
-        d3.csv('data/bcn-metro.csv', function(data) {
+        d3.csv('data/barcelona_metro.csv', function(data) {
           data.forEach(function (d) {
             console.log(set.has(d.name));
             console.log(d.name);
