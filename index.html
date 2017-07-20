@@ -15,7 +15,7 @@
     <!-- load the d3.js library -->
     <script src="http://d3js.org/d3.v4.min.js"></script>
     <script>
-    var color = d3.scale.ordinal()
+    var color = d3.scaleOrdinal()
     .domain(["L1", "L2", "L3", "L4", "L5", "L6", "L7", "L8", "L9", "L10", "L11"])
     .range(["rgb(225, 57, 62)", "rgb(156, 69, 154)", "rgb(83, 185, 85)", "rgb(254, 189, 16)", "rgb(49, 123, 200)", "rgb(132, 125, 198)", "rgb(174, 97, 24)", "rgb(230, 89, 180)",  "rgb(246, 132, 41)", "rgb(0, 173, 239)", "rgb(168, 209, 100)"])
 
@@ -46,7 +46,7 @@
                 icon: {
                   path: google.maps.SymbolPath.CIRCLE,
                   scale: 5,
-                  strokeColor : "#CC0000"
+                  strokeColor : color(d.line)
                 }
               });
               var metroInfo = new google.maps.InfoWindow({
