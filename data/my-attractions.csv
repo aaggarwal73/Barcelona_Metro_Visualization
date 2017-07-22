@@ -1,42 +1,116 @@
-name,lat,lng
-La Sagrada Familia,41.4036,2.1744
-Park Guell,41.4145,2.1527
-La Pedrera,41.3954,2.1620
-Casa Batllo,41.3916,2.1648
-Gothic Quarter,41.3819,2.1782
-Camp Nou,41.3809,2.1228
-Magic Fountain of Montjuic,41.3712,2.1517
-Barceloneta,41.3809,2.1894
-La Boqueria,41.3817,2.1716
-Palau de la Musica Catalana,41.3840,2.1762
-Barcelona Cathedral,41.3840,2.1762
-Tibidabo,41.4225,2.1186
-Placa de Catalunya,41.3870,2.1700
-Parc de la Ciutadella,41.3881,2.1860
-Museu Picasso,41.3852,2.1809
-Santa Maria del Mar,41.3839,2.1821,
-Arc de Triomf,41.3911,2.1806
-Palau Guell,41.3789,2.1742
-Museu Nacional d'Art de Catalunya (MNAC),41.3684,2.1536
-Museu d'Art Contemporani de Barcelona (MACBA),41.3832,2.1669
-Placa d'Espanya,41.3750,2.1668
-Castell de Montjuic,41.3630,2.1651
-CosmoCaixa,41.4130,2.1316
-Mirador de Colom,41.3758,2.1778
-Estadi Olimpic Lluis Companys,41.3648,2.1557
-Placa Reial,41.3801,2.1753
-Ciutat Vella,41.3809,2.1677
-Parc de Montjuic,41.3688,2.1633
-La Rambla,41.381389,2.173056
-Cascada Monumental,41.3901,2.1866
-Jardi Botanic de Barcelona,41.3621,2.1577
-El Gato de Botero,41.3781,2.1698
-Montjuc Cable Car,41.3687,2.1634
-Museu de la Xocolata,41.3871,2.1817
-Montjuic Cemetery,41.3548,2.1536
-Mercat del Born,41.3854,2.1841
-Parc del Laberint d'Horta,41.4402,2.1458
-Aquarium Barcelona,41.3768,2.1843
-Casa Amatller,41.3915,2.1650
-Museu Maritim de Barcelona,41.3752,2.1759
-Placa Sant Jaume,41.3827,2.1770
+name,lat,lng,,,,,
+La Sagrada Familia,41.4036,2.1744,,,,,
+Park Guell,41.4145,2.1527,,,,,
+La Pedrera,41.3954,2.162,,,,,
+Casa Batllo,41.3916,2.1648,,,,,
+Gothic Quarter,41.3819,2.1782,,,,,
+Camp Nou,41.3809,2.1228,,,,,
+Magic Fountain of Montjuic,41.3712,2.1517,,,,,
+Barceloneta,41.3809,2.1894,,,,,
+La Boqueria,41.3817,2.1716,,,,,
+Palau de la Musica Catalana,41.384,2.1762,,,,,
+Barcelona Cathedral,41.384,2.1762,,,,,
+Tibidabo,41.4225,2.1186,,,,,
+Placa de Catalunya,41.387,2.17,,,,,
+Parc de la Ciutadella,41.3881,2.186,,,,,
+Museu Picasso,41.3852,2.1809,,,,,
+Santa Maria del Mar,41.3839,2.1821,,,,,
+Arc de Triomf,41.3911,2.1806,,,,,
+Palau Guell,41.3789,2.1742,,,,,
+Museu Nacional d'Art de Catalunya (MNAC),41.3684,2.1536,,,,,
+Museu d'Art Contemporani de Barcelona (MACBA),41.3832,2.1669,,,,,
+Placa d'Espanya,41.375,2.1668,,,,,
+Castell de Montjuic,41.363,2.1651,,,,,
+CosmoCaixa,41.413,2.1316,,,,,
+Mirador de Colom,41.3758,2.1778,,,,,
+Estadi Olimpic Lluis Companys,41.3648,2.1557,,,,,
+Placa Reial,41.3801,2.1753,,,,,
+Ciutat Vella,41.3809,2.1677,,,,,
+Parc de Montjuic,41.3688,2.1633,,,,,
+La Rambla,41.381389,2.173056,,,,,
+Cascada Monumental,41.3901,2.1866,,,,,
+Jardi Botanic de Barcelona,41.3621,2.1577,,,,,
+El Gato de Botero,41.3781,2.1698,,,,,
+Montjuc Cable Car,41.3687,2.1634,,,,,
+Museu de la Xocolata,41.3871,2.1817,,,,,
+Montjuic Cemetery,41.3548,2.1536,,,,,
+Mercat del Born,41.3854,2.1841,,,,,
+Parc del Laberint d'Horta,41.4402,2.1458,,,,,
+Aquarium Barcelona,41.3768,2.1843,,,,,
+Casa Amatller,41.3915,2.165,,,,,
+Museu Maritim de Barcelona,41.3752,2.1759,,,,,
+Placa Sant Jaume,41.3827,2.177,,,,,
+Cosmo GalerÃ_a Y Bar,41.45284909,2.180635061,,,,,
+Ducha de casa,41.443602,2.167121,,,,,
+BD Barcelona Design Gallery,41.3961193,2.197962999,,,,,
+ExposiciÃ_ Japonisme,41.3713944,2.149381666,,,,,
+Singular Pessebrista,41.398837,2.122391,,,,,
+Puntoaparte Espai D' Art,41.408304,2.116198,,,,,
+SWAB Barcelona - Feria Internacional de Arte ContemporÃ¡neo,41.37165433,2.152312248,,,,,
+Swab Barcelona,41.421403,2.134267,,,,,
+DHUB Museu del Disseny de Barcelona,41.40248611,2.188233384,,,,,
+Fabra i Coats,41.433104,2.191091,,,,,
+Museu Nacional d'Art de Catalunya (MNAC),41.36900566,2.152480127,,,,,
+Poble Espanyol,41.36871712,2.147065401,,,,,
+Els Mistos,41.4305662,2.148220997,,,,,
+Palau Albeniz,41.36749946,2.155871412,,,,,
+Villa Rumana s. I,41.35664651,2.177696228,,,,,
+Reial Monestir de Santa Maria de Pedralbes,41.39588079,2.114172081,,,,,
+chapisteria Z.F. 4,41.34040801,2.134069965,,,,,
+320. Works of Antoni GaudÃ_ (1984/2005),41.41353751,2.152971625,,,,,
+El Born CC,41.38559932,2.183725834,,,,,
+Por la parte de los meridios,41.44663752,2.182098946,,,,,
+El SofÃ¡ De Mi Casa!,41.43959575,2.19277475,,,,,
+Mina Grott,41.41531838,2.097301033,,,,,
+Torre Castel de Montjuic,41.3633887,2.165950842,,,,,
+Museu Militar,41.36454096,2.166603372,,,,,
+Museu D'autÃ_mats Del Tibidabo,41.42191669,2.119659775,,,,,
+Gakuto no heya,41.44200255,2.189809084,,,,,
+Museu Gaudi Sagrada Familia,41.40424715,2.170768273,,,,,
+"Habitatge 1/11, Casa Bloc",41.44167,2.190529,,,,,
+SEAT Cotxes HistÃ_rics,41.33739258,2.132430249,,,,,
+ColÂ·lecciÃ_ de Carrosses FÃºnebres,41.35321577,2.156517506,,,,,
+Mirador Collserolla,41.43047832,2.12978861,,,,,
+Mirador de SarriÃ¡,41.40563665,2.110074721,,,,,
+Observatori Fabra,41.41861048,2.123897021,,,,,
+Mirador MarÃ_a Gispert,41.44215167,2.129716873,,,,,
+Mirador de La Carretera de les AigÃ_es,41.40591943,2.109868665,,,,,
+Passatge MallofrÃ©,41.39841604,2.121605791,,,,,
+Passeig De Miramar,41.37117284,2.171902657,,,,,
+Bunker del Carmel,41.419357,2.161688,,,,,
+Mirador de La Raba,41.43149676,2.131097424,,,,,
+CÃºpula Las Arenas,41.37613927,2.149424832,,,,,
+TurÃ_ De La Rovira,41.4192802,2.161767197,,,,,
+Mirador de Montbau,41.44493375,2.14752557,,,,,
+Mirador d'Horta,41.44168427,2.152321841,,,,,
+Mirador De L'Arrabassada,41.43149676,2.131174133,,,,,
+les Tres Creus in Park GÃ_ell,41.41329049,2.152729548,,,,,
+Mirador dels bombers,41.4158394,2.114881369,,,,,
+Turo De La Magarola,41.44215809,2.129769434,,,,,
+Cami Vallvidrera,41.40810589,2.116386249,,,,,
+MNAC Stairs,41.36891277,2.153352499,,,,,
+Terrassa Mirablau,41.416104,2.131099,,,,,
+Museu Palmero,41.42450714,2.139928102,,,,,
+Banco nÂ°4 del Pg de la Vall d'Hebron,41.4338997,2.146192297,,,,,
+Torre vigilÃ ncia Santa Creu D'Olorda,41.41442153,2.057920096,,,,,
+El Link y la Madre,41.40718079,2.168623924,,,,,
+Mirador IM,41.421466,2.132798,,,,,
+Mirador gym,41.3980826,2.1042785,,,,,
+Mirador vallvidrera,41.40378076,2.116657708,,,,,
+Statue Of Jesus Christ ( Top Of The World ),41.42180484,2.118888102,,,,,
+Ascensor PanorÃ mic de Vallvidrera,41.41343585,2.10448279,,,,,
+Mirador De Torre BarÃ_,41.44883341,2.159493222,,,,,
+ï…¿ MNAC,41.36896754,2.152950191,,,,,
+_Ÿ_°Ñ€_º _“ÑƒÑç_»ÑŒ. _¡____Ñ‚Ñ€_____°Ñè _¿_»__Ñ‰_°_´_º_°,41.414194,2.154686592,,,,,
+Museu de CiÃ¨ncies Naturals,41.41061425,2.22002,,,,,
+Institut BotÃ nic De Barcelona,41.36350479,2.166776102,,,,,
+Museu Grifols,41.40955138,2.133523386,,,,,
+Centro Interactivo del Pescado,41.33512485,2.113859653,,,,,
+Font de Canaletes,41.38527533,2.170117646,,,,,
+Castillo Torre BarÃ_,41.45138157,2.176306844,,,,,
+Les Quatre Columnes,41.37077905,2.152182742,,,,,
+Nou Barris.,41.43155377,2.175624613,,,,,
+Els Mistos,41.42980769,2.150710237,,,,,
+PlaÃ§a de l'Art Nouveau BarcelonÃ¨s,41.42017094,2.141233637,,,,,
+MausolÃ©e,41.43689043,2.181590181,,,,,
+Meadero,41.39379501,2.192639589,,,,,
