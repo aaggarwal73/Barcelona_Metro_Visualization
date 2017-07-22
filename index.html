@@ -64,7 +64,7 @@
           });
 
           //draw the attractions, idk why i even set the stroke color to black it's whatever we want it to beeeeee
-          d3.csv('data/barcelona-attraction.csv', function(data2) {
+          d3.csv('data/my-attractions.csv', function(data2) {
             data2.forEach(function (d2) {
                 var newPoint = new google.maps.LatLng(d2.lat, d2.lng);
                 data.forEach(function (d) {
