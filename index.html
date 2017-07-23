@@ -46,18 +46,16 @@
   <body>
     <h3>Maximizing a Day Trip to Barcelona</h3>
     <h3>By: Aman Aggarwal, Chad Gerhard, Matt Lord</h3>
+    <h4>Enter the distance in kilometers you're willing to walk from a metro station</h4>
     <form action="/action_page.php">
-      <br>Distance: <input type="range" min="0.01" max="4" id="distance"><br>
+      Distance: <input type="range" min="0.01" max="4" id="distance"><br>
     </form>
     <div id="map"></div>
     <!-- load the d3.js library -->
     <script src="http://d3js.org/d3.v4.min.js"></script>
     <script>
-    var slider = slider(selection).axis(true);
 
     // d3.select("body").insert("h2", ":first-child").text(headline + init_year);
-
-    var distanceValue = document.getElementById('distance').value
 
     var color = d3.scaleOrdinal()
     .domain(["L1", "L2", "L3", "L4", "L5", "L6", "L7", "L8", "L9", "L10", "L11"])
