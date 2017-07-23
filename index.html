@@ -59,7 +59,7 @@
     .range(["rgb(225, 57, 62)", "rgb(156, 69, 154)", "rgb(83, 185, 85)", "rgb(254, 189, 16)", "rgb(49, 123, 200)", "rgb(132, 125, 198)", "rgb(174, 97, 24)", "rgb(230, 89, 180)",  "rgb(246, 132, 41)", "rgb(234,121,53)", "rgb(0, 173, 239)", "rgb(168, 209, 100)"])
 
       function initMap() {
-
+        var minZoomLevel = 10;
         var distanceValue = document.getElementById("distance").value == null ? 0.1 : document.getElementById("distance").value;
         console.log(distanceValue);
 
@@ -70,6 +70,40 @@
         });
         var transitLayer = new google.maps.TransitLayer();
         transitLayer.setMap(map);
+
+              // Bounds for North America
+         var strictBounds = new google.maps.LatLngBounds(
+           new google.maps.LatLng(41.392959, 2.145683), 
+           new google.maps.LatLng(41.471724, 2.508048)
+         );
+
+         // Listen for the dragend event
+         google.maps.event.addListener(map, 'dragend', function() {
+           if (strictBounds.contains(map.getCenter())) return;
+
+           // We're out of bounds - Move the map back within the bounds
+
+           var c = map.getCenter(),
+               x = c.lng(),
+               y = c.lat(),
+               maxX = strictBounds.getNorthEast().lng(),
+               maxY = strictBounds.getNorthEast().lat(),
+               minX = strictBounds.getSouthWest().lng(),
+               minY = strictBounds.getSouthWest().lat();
+
+           if (x < minX) x = minX;
+           if (x > maxX) x = maxX;
+           if (y < minY) y = minY;
+           if (y > maxY) y = maxY;
+
+           map.setCenter(new google.maps.LatLng(barcelona));
+         });
+
+         // Limit the zoom level
+         google.maps.event.addListener(map, 'zoom_changed', function() {
+           if (map.getZoom() < minZoomLevel) map.setZoom(minZoomLevel);
+         });
+
 
         //puts all of the metro locations on the map.
         var set = new Set();
