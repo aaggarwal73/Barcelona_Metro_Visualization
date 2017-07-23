@@ -12,12 +12,17 @@
   <body>
     <h3>Maximizing a Day Trip to Barcelona</h3>
     <h3>By: Aman Aggarwal, Chad Gerhard, Matt Lord</h3>
+    <form action="/action_page.php">
+      <br>Distance: <input type="range" min="0.01" max="4" id="distance"><br>
+    </form>
     <div id="map"></div>
     <!-- load the d3.js library -->
     <script src="http://d3js.org/d3.v4.min.js"></script>
     <script>
 
     // d3.select("body").insert("h2", ":first-child").text(headline + init_year);
+
+    var distanceValue = document.getElementById('distance').value
 
     var color = d3.scaleOrdinal()
     .domain(["L1", "L2", "L3", "L4", "L5", "L6", "L7", "L8", "L9", "L10", "L11"])
@@ -69,13 +74,13 @@
           });
           //draw the attractions, idk why i even set the stroke color to black it's whatever we want it to beeeeee
           d3.csv('data/my-attractions.csv', function(data2) {
-          	var count = 0; 
+          	var count = 0;
 
             data2.forEach(function (d2) {
                 var newPoint = new google.maps.LatLng(d2.lat, d2.lng);
                 data.forEach(function (d) {
                     var metroStation = new google.maps.LatLng(d.lat, d.lng);
-                    if (google.maps.geometry.spherical.computeDistanceBetween(metroStation, newPoint) < 2000) {
+                    if (google.maps.geometry.spherical.computeDistanceBetween(metroStation, newPoint) < (distanceValue * 1000)) {
                         var marker = new google.maps.Marker({
                           position: newPoint,
                           map: map,
@@ -102,7 +107,7 @@
 
 
       }
-    
+
     </script>
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdRh9dvJMzZi2ucTPzmq3am9sRWyePEww&callback=initMap&libraries=geometry">
