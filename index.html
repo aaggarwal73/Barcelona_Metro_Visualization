@@ -2,11 +2,47 @@
 <html>
   <head>
     <style>
+
+
       #map {
         height: 600px;
         width: 100%;
        }
 
+	.ticks {
+	  font: 10px sans-serif;
+	}
+
+	.track,
+	.track-inset,
+	.track-overlay {
+	  stroke-linecap: round;
+	}
+
+	.track {
+	  stroke: #000;
+	  stroke-opacity: 0.3;
+	  stroke-width: 10px;
+	}
+
+	.track-inset {
+	  stroke: #ddd;
+	  stroke-width: 8px;
+	}
+
+	.track-overlay {
+	  pointer-events: stroke;
+	  stroke-width: 50px;
+	  stroke: transparent;
+	  cursor: crosshair;
+	}
+
+	.handle {
+	  fill: #fff;
+	  stroke: #000;
+	  stroke-opacity: 0.5;
+	  stroke-width: 1.25px;
+	}
     </style>
   </head>
   <body>
@@ -17,13 +53,82 @@
     <script src="http://d3js.org/d3.v4.min.js"></script>
     <script>
 
-    d3.select("body").append("p").insert("p", ":first-child").append("input")
-        .attr("type", "range")
-        .attr("min", "10")
-        .attr("max", "2000")
-        .attr("value", 10)
-        .attr("id", "distance");
-    
+    // d3.select("body").append("p").insert("p", ":first-child").append("input")
+    //     .attr("type", "range")
+    //     .attr("min", "10")
+    //     .attr("max", "2000")
+    //     .attr("value", 10)
+    //     .attr("id", "distance");
+    var margin = {top: 20, right: 20, bottom: 30, left: 40},
+	    width = 960 - margin.left - margin.right,
+	    height = 500 - margin.top - margin.bottom;
+
+
+	var svg = d3.select("body").append("svg")
+	    .attr("width", width + margin.left + margin.right)
+	    .attr("height", height + margin.top + margin.bottom)
+	  	.append("g")
+	    .attr("transform", 
+	          "translate(" + margin.left + "," + margin.top + ")");
+
+    // var svg = d3.select("svg"),
+	   //  margin = {right: 50, left: 50},
+	   //  width = +svg.attr("width") - margin.left - margin.right,
+	   //  height = +svg.attr("height");
+
+	var x = d3.scaleLinear()
+	    .domain([0, 2000])
+	    .range([0, 500])
+	    .clamp(true);
+
+	var slider = svg.append("g")
+	    .attr("class", "slider")
+	    .attr("transform", "translate(" + margin.left + "," + height / 2 + ")");
+
+	slider.append("line")
+	    .attr("class", "track")
+	    .attr("x1", 10)
+	    .attr("x2", 2000)
+	  	.select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+	    	.attr("class", "track-inset")
+	  	.select(function() { return this.parentNode.appendChild(this.cloneNode(true)); })
+	   	 .attr("class", "track-overlay")
+	    .call(d3.drag()
+	        .on("start.interrupt", function() { slider.interrupt(); })
+	        .on("start drag", function() { distance(x.invert(d3.event.x)); }));
+
+	slider.insert("g", ".track-overlay")
+	    .attr("class", "ticks")
+	    .attr("transform", "translate(0," + 15 + ")")
+	  .selectAll("text")
+	  .data(x.ticks(10))
+	  .enter().append("text")
+	    .attr("x", x)
+	    .attr("text-anchor", "middle")
+	    .text(function(d) { return d; });
+
+var handle = slider.insert("circle", ".track-overlay")
+    .attr("class", "handle")
+    .attr("r", 9);
+
+slider.transition() 
+    .duration(750)
+    .tween("distance", function() {
+      var i = d3.interpolate(0, 70);
+      var distance = 0;
+      // return function(t) { hue(i(t)); };
+        	      return function(t) { distance = handle.attr("cx", x(i(t))); };
+
+    });
+
+function distance(h) {
+  	handle.attr("cx", x(h));
+}
+// function hue(h) {
+// 	console.log(h);
+//   	handle.attr("cx", x(h));
+//   	return h;
+// }
 
     // d3.select("body").insert("h2", ":first-child").text(headline + init_year);
 
@@ -80,7 +185,7 @@
 
             data2.forEach(function (d2) {
                 var newPoint = new google.maps.LatLng(d2.lat, d2.lng);
-                console.log(d2.name);
+                // console.log(d2.name);
                 data.forEach(function (d) {
                     var metroStation = new google.maps.LatLng(d.lat, d.lng);
                     if (google.maps.geometry.spherical.computeDistanceBetween(metroStation, newPoint) < 2000) {
