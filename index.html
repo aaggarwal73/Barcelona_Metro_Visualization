@@ -44,8 +44,8 @@
     </style>
   </head>
   <body>
-    <h3>Maximizing a Day Trip to Barcelona</h3>
-    <h3>By: Aman Aggarwal, Chad Gerhard, Matt Lord</h3>
+    <h3 align="center">Maximizing a Day Trip to Barcelona</h3>
+    <h3 align="center">By: Aman Aggarwal, Chad Gerhard, Matt Lord</h3>
     <h4>Enter the distance in kilometers you're willing to walk from a metro station</h4>
     <form action="/action_page.php">
       Distance: <input type="range" min="0.01" max="4" id="distance"><br>
@@ -54,8 +54,6 @@
     <!-- load the d3.js library -->
     <script src="http://d3js.org/d3.v4.min.js"></script>
     <script>
-
-    // d3.select("body").insert("h2", ":first-child").text(headline + init_year);
 
     var color = d3.scaleOrdinal()
     .domain(["L1", "L2", "L3", "L4", "L5", "L6", "L7", "L8", "L9", "L9S", "L10", "L11"])
@@ -101,8 +99,6 @@
               set.add(d.name + ": " + d.line);
 
             }
-            //console.log(set);
-
 
           });
           //draw the attractions, idk why i even set the stroke color to black it's whatever we want it to beeeeee
@@ -136,12 +132,8 @@
                 })
             });
           });
-
         });
-
-
       }
-
     </script>
     <script async defer
       src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDdRh9dvJMzZi2ucTPzmq3am9sRWyePEww&callback=initMap&libraries=geometry">
