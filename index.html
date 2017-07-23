@@ -43,7 +43,7 @@
           data.forEach(function (d) {
             // console.log(set.has(d.name));
             // console.log(d.name);
-            if (!set.has(d.name)) {
+            if (!set.has(d.name + ": " + d.line)) {
               var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(d.lat, d.lng),
                 map: map,
@@ -54,15 +54,16 @@
                 }
               });
               var metroInfo = new google.maps.InfoWindow({
-                content: d.name
+                content: d.name + ": " + d.line
               });
 
               marker.addListener('click', function() {
                 metroInfo.open(map, marker);
               });
-              set.add(d.name);
+              set.add(d.name + ": " + d.line);
 
             }
+            //console.log(set);
 
 
           });
