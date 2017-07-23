@@ -63,20 +63,15 @@
         var distanceValue = document.getElementById("distance").value == null ? 0.1 : document.getElementById("distance").value;
         console.log(distanceValue);
 
-        var barcelona = {lat: 41.366360, lng: 2.175960};
+        var barcelona = {lat: 41.384876, lng: 2.172852};
         var map = new google.maps.Map(document.getElementById('map'), {
           zoom: 14,
           center: barcelona
-        });
-        var marker = new google.maps.Marker({
-          position: barcelona,
-          map: map
         });
         var transitLayer = new google.maps.TransitLayer();
         transitLayer.setMap(map);
 
         //puts all of the metro locations on the map.
-        //@TODO make it so only one marker per station
         var set = new Set();
         d3.csv('data/barcelona_metro.csv', function(data) {
           data.forEach(function (d) {
