@@ -90,7 +90,6 @@
         myFunction(); 
         var minZoomLevel = 12;
         var distanceValue = document.getElementById("distance").value == null ? 0.1 : document.getElementById("distance").value;
-        // console.log(distanceValue);
 
         var barcelona = {lat: 41.384876, lng: 2.172852};
         var map = new google.maps.Map(document.getElementById('map'), {
@@ -167,6 +166,13 @@
             });
           });
         });
+      }
+      function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+        infoWindow.setPosition(pos);
+        infoWindow.setContent(browserHasGeolocation ?
+                              'Error: The Geolocation service failed.' :
+                              'Error: Your browser doesn\'t support geolocation.');
+        infoWindow.open(map);
       }
     </script>
     <script async defer
