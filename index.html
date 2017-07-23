@@ -120,6 +120,7 @@
             }
 
           });
+
           //draw the attractions, idk why i even set the stroke color to black it's whatever we want it to beeeeee
           d3.csv('data/my-attractions.csv', function(data2) {
           	var count = 0;
@@ -139,9 +140,9 @@
                             strokeColor : "#000000"
                           }
                       });
-
                       var info = new google.maps.InfoWindow({
-                          content: d2.name
+                            content: "<p> " + "<b>" + d2.name + "</b>" + "<br />" + "Closest Station: " + d2.metro
+
                       });
 
                       marker.addListener('click', function() {
