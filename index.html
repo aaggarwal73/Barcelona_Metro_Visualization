@@ -50,12 +50,14 @@
     <!-- load the d3.js library -->
     <script src="http://d3js.org/d3.v4.min.js"></script>
     <script>
+    var slider = slider(selection).axis(true);
+
     d3.select("body").append("p").insert("p", ":first-child").append("input")
         .attr("type", "range")
         .attr("min", "10")
-        .attr("max", "1000")
+        .attr("max", "2000")
         .attr("value", 10)
-        .attr("id", "year");
+        .attr("id", "distance");
     
 
     // d3.select("body").insert("h2", ":first-child").text(headline + init_year);
@@ -116,7 +118,7 @@
 
                 data.forEach(function (d) {
                     var metroStation = new google.maps.LatLng(d.lat, d.lng);
-                    if (google.maps.geometry.spherical.computeDistanceBetween(metroStation, newPoint) < 1000) {
+                    if (google.maps.geometry.spherical.computeDistanceBetween(metroStation, newPoint) < distance.value()) {
                         var marker = new google.maps.Marker({
                           position: newPoint,
                           map: map,
