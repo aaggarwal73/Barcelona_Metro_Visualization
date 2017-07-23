@@ -115,7 +115,7 @@
 
             data2.forEach(function (d2) {
                 var newPoint = new google.maps.LatLng(d2.lat, d2.lng);
-
+                console.log(d2.name);
                 data.forEach(function (d) {
                     var metroStation = new google.maps.LatLng(d.lat, d.lng);
                     if (google.maps.geometry.spherical.computeDistanceBetween(metroStation, newPoint) < distance.value()) {
